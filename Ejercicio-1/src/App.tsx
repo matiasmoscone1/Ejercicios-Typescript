@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import data from "../src/data/data.json";
 import './App.css'
 import Tasks from './Tasks';
+import AddTask from './AddTask';
 import { Task } from './types';
 
 function App() {
@@ -44,18 +45,12 @@ function App() {
       <header>
         <h1>Lista de tareas</h1>
       </header>
-      <button id='btn-add-task' onClick={() => {setNewTask({id: tasks.length + 1, title: "", completed: false });setFlagAddTask(true)}}>Agregar Tarea</button>
+      <button id='btn-add-task' onClick={() => {setNewTask({id: Date.now(), title: "", completed: false });setFlagAddTask(true)}}>Agregar Tarea</button>
       <section>
-        {flagAddTask ? <div className='popup-container' onClick={(e) => closePopup(e)}>
-          <div className='popup' ref={popupRef}>
-            <h3>Tarea nueva</h3>
-            <div><label>Id: </label><span>{tasks.length}</span></div>
-            <div><label>Titulo: </label><textarea cols={40} rows={2} value={newTask?.title || ""} 
-              onChange={(e) => setNewTask((prev) => prev ? {...prev, title: e.target.value} : null)}/></div>
-            <div><label>Estado: </label><input type='checkbox' onChange={() => setNewTask((prev) => prev ? {...prev, completed: !prev.completed} : null)} /></div>
-            <button onClick={() => addTask()}>Agregar</button>
-          </div>
-        </div> : <></>}
+        <AddTask flagAddTask={flagAddTask} newTask={newTask} 
+        setNewTask={setNewTask} addTask={addTask}
+        closePopup={closePopup} popupRef={popupRef}/>
+      
         <div className='task-container'>
           <div className='task'>
             <span className='span-1'><strong>Id</strong></span>

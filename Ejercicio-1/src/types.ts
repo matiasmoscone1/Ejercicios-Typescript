@@ -1,3 +1,5 @@
+import { RefObject } from "react";
+
 export type Task = {
     id: number,
     title: string,
@@ -9,3 +11,12 @@ export type TasksProps = {
     toggleCompleted: (id: number) => void,
     deleteTask: (id: number) => void
 };
+
+export type AddTaskProps = {
+    flagAddTask: boolean,
+    newTask: Task | null,
+    setNewTask: React.Dispatch<React.SetStateAction<Task | null>>,
+    addTask: () => void,
+    closePopup: (e: React.MouseEvent) => void,
+    popupRef: RefObject<HTMLDivElement>,
+}
