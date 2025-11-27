@@ -1,0 +1,188 @@
+************************* Ejercicio 1 — Lista de tareas con tipos básicos *************************
+
+Objetivo: practicar useState tipado, tipos simples y props tipadas.
+
+Enunciado:
+Creá una aplicación de tareas (ToDo) donde cada tarea tenga el siguiente tipo:
+
+type Task = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
+
+La app debe permitir:
+
+agregar tareas (formulario tipado),
+
+marcar como completada,
+
+eliminar tareas,
+
+mostrar la lista en un componente separado que reciba las tareas como props.
+
+Tipá absolutamente todo: estados, props, funciones y eventos.
+
+**************************************************************************************************** 
+
+
+
+***************** Ejercicio 2 — Formulario avanzado con validación por TypeScript ***************** 
+
+Objetivo: practicar eventos tipados, interfaces y estados más complejos.
+
+Enunciado:
+Construí un formulario con los siguientes campos:
+
+type RegisterForm = {
+  name: string;
+  email: string;
+  age: number;
+  newsletter: boolean;
+};
+
+
+El formulario debe:
+
+Validar tipos en tiempo real (por ejemplo, age siempre debe ser número).
+
+Mostrar errores cuando el usuario ingrese tipos incorrectos.
+
+Enviar los datos a un componente padre usando props tipadas.
+
+No usar librerías de formularios, solo React + TS.
+
+****************************************************************************************************
+
+
+
+******************************** Ejercicio 3 — Fetch de API tipado ********************************
+
+Objetivo: practicar interfaces, fetch, estados tipados y manejo de errores.
+
+Enunciado:
+Consumí la API pública de JSONPlaceholder:
+
+https://jsonplaceholder.typicode.com/users
+
+Creá una interfaz:
+
+interface ApiUser {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+}
+
+
+La aplicación debe:
+
+Obtener los usuarios,
+
+Guardarlos en un estado tipado,
+
+Renderizarlos en una tabla,
+
+Mostrar un mensaje de carga y otro de error.
+
+Prohibido usar any.
+
+****************************************************************************************************
+
+
+
+***************** Ejercicio 4 — Sistema de autenticación ficticio con useContext ******************
+
+Objetivo: practicar contextos tipados y hooks personalizados.
+
+Enunciado:
+Creá un contexto llamado AuthContext con el siguiente tipo:
+
+type AuthUser = {
+  id: number;
+  name: string;
+  role: "admin" | "user";
+};
+
+
+El contexto debe incluir:
+
+el usuario logueado (o null)
+
+una función login() que reciba un usuario
+
+una función logout()
+
+Hacé:
+
+un provider tipado,
+
+un hook useAuth(),
+
+un componente que muestre si el usuario está logueado o no,
+
+un botón para simular login y logout.
+
+****************************************************************************************************
+
+
+
+************ Ejercicio 5 — Carrito de compras con useContext + useReducer (intermedio) ************
+
+Objetivo: practicar tipado avanzado, reducers, actions, contextos e interfaces.
+
+Enunciado:
+Creá una aplicación con un carrito de compras.
+
+Definí los tipos:
+
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
+
+type CartItem = Product & {
+  quantity: number;
+};
+
+
+Creá un reducer con estas acciones:
+
+type CartAction =
+  | { type: "ADD"; payload: Product }
+  | { type: "REMOVE"; payload: number } // id del producto
+  | { type: "CLEAR" };
+
+
+El estado del reducer debe ser:
+
+type CartState = {
+  items: CartItem[];
+};
+
+
+Implementá un CartContext tipado con:
+
+state: CartState
+
+dispatch: React.Dispatch<CartAction>
+
+La app debe permitir:
+
+listar productos (pueden ser mock),
+
+agregar al carrito,
+
+eliminar del carrito,
+
+vaciar el carrito,
+
+calcular total.
+
+Todo debe estar estrictamente tipado.
+
+****************************************************************************************************
+
+
