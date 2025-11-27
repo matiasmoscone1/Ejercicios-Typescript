@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import data from "../src/data/data.json";
 import './App.css'
 
 function App() {
   const [flagAddTask, setFlagAddTask] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>(data.array);
 
   const popupRef = useRef<HTMLDivElement>(null);
 
@@ -21,6 +22,15 @@ function App() {
     };
   };
 
+  const toggleCompleted = (id: number) => {
+    setTasks((prev: Task[]) => {
+      return (prev.map((task) => {
+        return(task.id === id ? {...task, completed: !task.completed} : task)
+      }))
+    });
+  }
+
+
 
   return (
     <>
@@ -31,7 +41,8 @@ function App() {
       <section>
         {flagAddTask ? <div className='popup-container' onClick={(e) => closePopup(e)}>
           <div className='popup' ref={popupRef}>
-
+            <textarea cols={25} rows={25}/>
+            <input type='checkbox' />
           </div>
         </div> : <></>}
         <div className='task-container'>
@@ -41,11 +52,11 @@ function App() {
             <span className='span-3'><strong>Completed</strong></span>
             <span><strong>Actions</strong></span>
           </div>
-          {data.array.map((task) => {
+          {tasks.map((task) => {
             return(<div key={task.id} className='task'>
               <span className='span-1'>{task.id}</span>
               <span className='span-2'>{task.title}</span>
-              <span className='span-3'>{task.completed === true ? "completada" : "no"}</span>
+              <span className='span-3'><input type='checkbox' checked={task.completed} onChange={() => toggleCompleted(task.id)}/></span>
               <button>Eliminar</button>
             </div>)
           })}
