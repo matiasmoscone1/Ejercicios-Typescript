@@ -1,0 +1,35 @@
+{
+    "array": [
+        {
+            "id": 0,
+            "title": "Primera tarea de prueba",
+            "completed": true
+        },
+        {
+            "id": 1,
+            "title": "Comprar alimentos para la semana",
+            "completed": false
+        },
+        {
+            "id": 2,
+            "title": "Revisar y responder correos pendientes",
+            "completed": true
+        },
+        {
+            "id": 3,
+            "title": "Actualizar el sistema del gimnasio",
+            "completed": false
+        },
+        {
+            "id": 4,
+            "title": "Desarrollar nueva función en proyecto React",
+            "completed": false
+        },
+        {
+            "id": 5,
+            "title": "Hacer backup de la base de datos",
+            "completed": true
+        }
+    ]
+}
+
