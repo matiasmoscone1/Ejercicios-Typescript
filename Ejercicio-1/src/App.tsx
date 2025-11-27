@@ -30,7 +30,6 @@ function App() {
     });
   }
 
-  console.log(newTask);
   const addTask = () => {
     if(!newTask)return;
     setTasks((prev) => [...prev, newTask]);
@@ -38,6 +37,9 @@ function App() {
     setFlagAddTask(false);
   }
 
+  const deleteTask = (id: number) => {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+  }
 
 
   return (
@@ -69,7 +71,7 @@ function App() {
               <span className='span-1'>{task.id}</span>
               <span className='span-2'>{task.title}</span>
               <span className='span-3'><input type='checkbox' checked={task.completed} onChange={() => toggleCompleted(task.id)}/></span>
-              <button>Eliminar</button>
+              <button onClick={() => deleteTask(task.id)}>Eliminar</button>
             </div>)
           })}
         </div>
