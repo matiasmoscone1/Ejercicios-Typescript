@@ -82,4 +82,14 @@ section{
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.popup textarea{
+  padding: 5px;
+  font-size: 18px;
 }
