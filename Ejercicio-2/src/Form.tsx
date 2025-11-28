@@ -1,25 +1,29 @@
-import { useRef, useState } from "react";
-import { RegisterForm, FormProps } from "./types";
+import { useState } from "react";
+import { RegisterForm, FormProps, FlagsForm } from "./types";
 
-const Form = ({validationFormName}: FormProps) => {
+const Form = ({validationFormName, validationFormEmail}: FormProps) => {
 
     const [form, setForm] = useState<RegisterForm>();
-    const [isValid, setIsValid] = useState(true);
-
-    const refInput = useRef<HTMLInputElement>(null);
+    const [isValid, setIsValid] = useState<FlagsForm>({
+        isValidName: true,
+        isValidEmail: true,
+        isValidAge: true,
+        isValidNewsletter: true
+    });
 
 
 
     return(<form>
         <div>
             <label>Nombre</label>
-            <input ref={refInput} className={isValid ? "" : "input-error"} onChange={(e) => {
+            <input className={isValid.isValidName ? "" : "input-error"} onChange={(e) => {
                 const valid = validationFormName(e.target.value);
-                setIsValid(valid)}}/>
+                console.log(valid);
+                setIsValid((prev) => ({...prev, isValidName: valid}))}}/>
         </div>
         <div>
             <label>Email</label>
-            <input  />
+            <input />
         </div>
         <div>
             <label>Edad</label>
@@ -29,6 +33,7 @@ const Form = ({validationFormName}: FormProps) => {
             <label>Cv</label>
             <input  />
         </div>
+        <button type="submit" onClick={(e) => e.preventDefault()}>Enviar</button>
     </form>);
 
 }

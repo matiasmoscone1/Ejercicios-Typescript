@@ -12,12 +12,22 @@ function App() {
     return true;
   }
 
+  const validationFormEmail = (word: string) => {
+    const regEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!regEx.test(word)){
+      return false;
+    }
+    return true;
+  }
+
 
   return (
     <>
     
-      <Form validationFormName={validationFormName}/>
-
+      <Form validationFormName={validationFormName} 
+      validationFormEmail={validationFormEmail}
+      
+      />
     </>
   )
 }
