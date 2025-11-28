@@ -8,3 +8,9 @@
 .input-error{
   border-color: red;
 }
+
+.input-error{
+  outline: none;
+  border-color: red;
+}
+

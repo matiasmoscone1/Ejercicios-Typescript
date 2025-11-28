@@ -5,11 +5,11 @@ import { FormProps } from './types';
 function App() {
   
   const validationFormName = (word: string) => {
-    const regEx = /^[A-Za-z]+$/;    
+    const regEx = /^[A-Za-z]{4,16}$/;
     if(!regEx.test(word)){
       return false;
     }
-    return true;    
+    return true;
   }
 
 
