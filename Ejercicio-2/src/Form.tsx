@@ -36,6 +36,8 @@ const Form = ({validationFormName, validationFormEmail,
                 setIsValid((prev) => ({...prev, isValidName: valid}));
                 setForm((prev) => ({...prev, firstname: e.target.value}))
                 }}/>
+                {!isValid.isValidName ? <span>El nombre debe tener entre 4 y 16 caracteres.</span>
+                : <></>}
         </div>
         <div>
             <label>Email</label>
