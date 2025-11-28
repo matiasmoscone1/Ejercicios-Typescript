@@ -20,13 +20,20 @@ function App() {
     return true;
   }
 
+  const validationFormAge = (num: number) => {
+    if(num >= 18 && num < 100){
+      return true;
+    }
+    return false;
+  }
+
 
   return (
     <>
     
       <Form validationFormName={validationFormName} 
       validationFormEmail={validationFormEmail}
-      
+      validationFormAge={validationFormAge}
       />
     </>
   )

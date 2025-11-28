@@ -1,6 +1,6 @@
 
 export type RegisterForm = {
-    name: string,
+    firstname: string,
     email: string,
     age: number,
     newsletter: boolean
@@ -15,5 +15,6 @@ export type FlagsForm = {
 export type FormProps = {
     validationFormName: (word: string) => boolean,
     validationFormEmail: (word: string) => boolean,
-    
+    validationFormAge: (num: number) => boolean,
+
 }
