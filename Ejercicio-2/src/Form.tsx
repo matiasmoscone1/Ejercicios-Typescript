@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { RegisterForm, FormProps, FlagsForm } from "./types";
 
 const Form = ({validationFormName, validationFormEmail,
@@ -17,10 +17,18 @@ const Form = ({validationFormName, validationFormEmail,
         isValidNewsletter: true
     });
 
-    console.log(form);
+
+    const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if(Object.values(isValid).every(Boolean) || form.firstname === "" && 
+        form.email === "" && form.age > 0){
+            return false;
+        }
+        console.log(form);
+    }
 
 
-    return(<form>
+    return(<form onSubmit={(e) => submitForm(e)}>
         <div>
             <label>Nombre</label>
             <input className={isValid.isValidName ? "" : "input-error"} onChange={(e) => {
@@ -52,7 +60,7 @@ const Form = ({validationFormName, validationFormEmail,
                 setForm((prev) => ({...prev, newsletter: e.target.checked}));
             }}/>
         </div>
-        <button type="submit" onClick={(e) => e.preventDefault()}>Enviar</button>
+        <button type="submit">Enviar</button>
     </form>);
 
 }
