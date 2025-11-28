@@ -4,6 +4,7 @@ import { RegisterForm, FormProps } from "./types";
 const Form = ({validationFormName}: FormProps) => {
 
     const [form, setForm] = useState<RegisterForm>();
+    const [isValid, setIsValid] = useState(true);
 
     const refInput = useRef<HTMLInputElement>(null);
 
@@ -12,12 +13,9 @@ const Form = ({validationFormName}: FormProps) => {
     return(<form>
         <div>
             <label>Nombre</label>
-            <input ref={refInput} onChange={(e) => {
-                if(!validationFormName(e.target.value)){
-                    if(refInput.current){
-                        refInput.current.style.borderColor = "red";
-                    }
-                }}}/>
+            <input ref={refInput} className={isValid ? "" : "input-error"} onChange={(e) => {
+                const valid = validationFormName(e.target.value);
+                setIsValid(valid)}}/>
         </div>
         <div>
             <label>Email</label>
