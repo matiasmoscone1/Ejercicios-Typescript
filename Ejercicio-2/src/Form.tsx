@@ -25,9 +25,9 @@ const Form = ({validationFormName, validationFormEmail,
             <label>Nombre</label>
             <input className={isValid.isValidName ? "" : "input-error"} onChange={(e) => {
                 const valid = validationFormName(e.target.value);
-                console.log(valid);
                 setIsValid((prev) => ({...prev, isValidName: valid}));
-                setForm((prev) => ({...prev, firstname: e.target.value}))}}/>
+                setForm((prev) => ({...prev, firstname: e.target.value}))
+                }}/>
         </div>
         <div>
             <label>Email</label>
@@ -42,11 +42,15 @@ const Form = ({validationFormName, validationFormEmail,
             <input className={isValid.isValidAge ? "" : "input-error"} onChange={(e) => {
                 const valid = validationFormAge(Number(e.target.value));
                 setIsValid((prev) => ({...prev, isValidAge: valid}));
-            }} />
+                setForm((prev) => ({...prev, age: Number(e.target.value)}));
+            }}/>
         </div>
         <div>
             <label>Cv</label>
-            <input type="checkbox" onChange={(e) => setIsValid((prev) => ({...prev, isValidNewsletter: e.target.checked}))}/>
+            <input type="checkbox" onChange={(e) => {
+                setIsValid((prev) => ({...prev, isValidNewsletter: e.target.checked}));
+                setForm((prev) => ({...prev, newsletter: e.target.checked}));
+            }}/>
         </div>
         <button type="submit" onClick={(e) => e.preventDefault()}>Enviar</button>
     </form>);
