@@ -13,7 +13,9 @@ export type AuthContextType = {
     logout: () => void,
     isLogged: boolean,
     apiUsers: ApiUser[] | null,
-    setApiUsers: (prev: ApiUser[]) => void
+    setApiUsers: (prev: ApiUser[]) => void,
+    isLoading: boolean,
+    fetchApi: () => void
 }
 
 

@@ -22,7 +22,10 @@ const Login = () => {
             setState((prev) => ({...prev, password: e.target.value}))
         }}/>
 
-        <button onClick={() => auth?.login(state.username, state.password)}>Log In</button>
+        <button onClick={() => {
+            auth?.login(state.username, state.password);
+            auth?.fetchApi()
+        }}>Log In</button>
 
     </div>)
 

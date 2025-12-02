@@ -36,7 +36,12 @@ const Dashboard = () => {
             </table>
 
             <button onClick={() => auth?.logout()}>Log Out</button>
+        {auth?.isLoading ? <div className="loading">
+            <h3>Cargando...</h3>
         </div>
+        : <></>}
+
+        </div>        
         : <></>}
 
     </div>)

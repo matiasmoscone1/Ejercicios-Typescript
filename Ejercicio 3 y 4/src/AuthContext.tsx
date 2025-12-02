@@ -18,6 +18,8 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
     const [isLogged, setIsLogged] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const login = (username: string, password: string) => {
         if(username === arrUser[0] && password === arrUser[1]){
             setUserState((prev) => ({...prev, id: Date.now(), name: arrUser[0], role: "admin"}))
@@ -35,11 +37,16 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
     const fetchApi = async () => {
         try{
+            setIsLoading(true);
             const response = await fetch(`https://jsonplaceholder.typicode.com/users`, {
                 method: "GET",
                 headers: {"Content-Type":"application/json"}
             });
+            
             if(response.ok){
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 2000);
                 const data = await response.json();
                 let newArray: ApiUser[] = data.map((user: ApiUser) => ({
                     id: user.id,
@@ -56,14 +63,15 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
     }
 
+    /*
     useEffect(() => {
         fetchApi();
-    }, []);
+    }, []);*/
 
     console.log(apiUsers);
 
     return(<AuthContext.Provider value={{ user: userState, login, logout, 
-    isLogged, apiUsers, setApiUsers}}>
+    isLogged, apiUsers, setApiUsers, isLoading, fetchApi}}>
         { children }
     </AuthContext.Provider>)
 
