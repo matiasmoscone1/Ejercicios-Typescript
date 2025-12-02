@@ -11,10 +11,20 @@ export type AuthContextType = {
     user: AuthUser | null,
     login: (username: string, password: string) => void,
     logout: () => void,
-    isLogged: boolean
+    isLogged: boolean,
+    apiUsers: ApiUser[] | null,
+    setApiUsers: (prev: ApiUser[]) => void
 }
 
 
 export type AuthProviderProps = {
     children: ReactNode
 }
+
+export interface ApiUser {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+}
+

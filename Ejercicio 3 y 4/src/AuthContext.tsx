@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react"
-import { AuthContextType, AuthProviderProps, AuthUser } from "./types";
+import { ApiUser, AuthContextType, AuthProviderProps, AuthUser } from "./types";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 export const useAuth = () => useContext(AuthContext);
@@ -13,6 +13,8 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         name: "",
         role: "user"
     });
+
+    const [apiUsers, setApiUsers] = useState<ApiUser[] | null>(null);
 
     const [isLogged, setIsLogged] = useState(false);
 
@@ -31,11 +33,37 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         setUserState({id: 0, name: "", role: "user"});
     }
 
+    const fetchApi = async () => {
+        try{
+            const response = await fetch(`https://jsonplaceholder.typicode.com/users`, {
+                method: "GET",
+                headers: {"Content-Type":"application/json"}
+            });
+            if(response.ok){
+                const data = await response.json();
+                let newArray: ApiUser[] = data.map((user: ApiUser) => ({
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone
+                }))
 
+                setApiUsers(newArray);
+            }
+        }catch(err){
+            console.error("Ocurrió un error en la consulta de los usuarios.");
+        }
 
+    }
+
+    useEffect(() => {
+        fetchApi();
+    }, []);
+
+    console.log(apiUsers);
 
     return(<AuthContext.Provider value={{ user: userState, login, logout, 
-    isLogged}}>
+    isLogged, apiUsers, setApiUsers}}>
         { children }
     </AuthContext.Provider>)
 

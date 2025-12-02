@@ -18,7 +18,7 @@ const Login = () => {
         <input placeholder="Username" type="text" onChange={(e) => {
             setState((prev) => ({...prev, username: e.target.value}))
         }}/>
-        <input placeholder="Password" type="password" onChange={(e) => {
+        <input placeholder="Password" type="text" onChange={(e) => {
             setState((prev) => ({...prev, password: e.target.value}))
         }}/>
 
