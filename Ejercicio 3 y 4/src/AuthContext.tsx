@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react"
+import { createContext, useState, useContext, useEffect } from "react"
 import { AuthContextType, AuthProviderProps, AuthUser } from "./types";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -14,23 +14,28 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         role: "user"
     });
 
+    const [isLogged, setIsLogged] = useState(false);
 
     const login = (username: string, password: string) => {
         if(username === arrUser[0] && password === arrUser[1]){
             setUserState((prev) => ({...prev, id: Date.now(), name: arrUser[0], role: "admin"}))
+            setIsLogged(true);
         }else{
+            setIsLogged(false);
             return;
         }
     }
 
-
     const logout = () => {
-
+        setIsLogged(false);
+        setUserState({id: 0, name: "", role: "user"});
     }
 
 
 
-    return(<AuthContext.Provider value={{ user: userState, login, logout}}>
+
+    return(<AuthContext.Provider value={{ user: userState, login, logout, 
+    isLogged}}>
         { children }
     </AuthContext.Provider>)
 

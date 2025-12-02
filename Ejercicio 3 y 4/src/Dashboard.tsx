@@ -10,8 +10,13 @@ const Dashboard = () => {
     }
 
 
+
     return(<div>
-        
+        {auth?.isLogged ? <div>
+            <h2>Usuario {auth?.user?.name} logueado!!!</h2>
+            <button onClick={() => auth?.logout()}>Log Out</button>
+        </div>
+        : <></>}
 
     </div>)
 

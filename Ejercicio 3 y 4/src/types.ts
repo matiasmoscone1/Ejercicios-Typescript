@@ -10,7 +10,8 @@ export type AuthUser = {
 export type AuthContextType = {
     user: AuthUser | null,
     login: (username: string, password: string) => void,
-    logout: () => void
+    logout: () => void,
+    isLogged: boolean
 }
 
 
