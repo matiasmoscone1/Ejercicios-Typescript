@@ -1,7 +1,7 @@
 import { AuthContext, useAuth } from "./AuthContext";
 import { useState } from "react";
 
-const arrUser = ["user", "1234"];
+
 const Login = () => {
 
     const auth = useAuth();
@@ -21,6 +21,8 @@ const Login = () => {
         <input placeholder="Password" type="password" onChange={(e) => {
             setState((prev) => ({...prev, password: e.target.value}))
         }}/>
+
+        <button onClick={() => auth?.login(state.username, state.password)}>Log In</button>
 
     </div>)
 
