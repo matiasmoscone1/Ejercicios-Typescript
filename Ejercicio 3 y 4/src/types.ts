@@ -18,7 +18,6 @@ export type AuthContextType = {
     fetchApi: () => void
 }
 
-
 export type AuthProviderProps = {
     children: ReactNode
 }
@@ -28,5 +27,12 @@ export interface ApiUser {
     name: string;
     email: string;
     phone: string;
+}
+
+export type NewUser = {
+    id: number,
+    name: string,
+    email: string,
+    telephone: number
 }
 

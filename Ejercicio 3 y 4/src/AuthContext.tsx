@@ -24,6 +24,8 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         if(username === arrUser[0] && password === arrUser[1]){
             setUserState((prev) => ({...prev, id: Date.now(), name: arrUser[0], role: "admin"}))
             setIsLogged(true);
+            localStorage.setItem("user", JSON.stringify({username: username}));
+            
         }else{
             setIsLogged(false);
             return;
@@ -33,6 +35,7 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
     const logout = () => {
         setIsLogged(false);
         setUserState({id: 0, name: "", role: "user"});
+        localStorage.removeItem("user");
     }
 
     const fetchApi = async () => {
@@ -46,7 +49,7 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
             if(response.ok){
                 setTimeout(() => {
                     setIsLoading(false);
-                }, 2000);
+                }, 1000);
                 const data = await response.json();
                 let newArray: ApiUser[] = data.map((user: ApiUser) => ({
                     id: user.id,
