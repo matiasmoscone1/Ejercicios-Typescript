@@ -32,7 +32,7 @@ const Dashboard = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
-                            <td><button>Editar</button></td>
+                            <td><button onClick={() => auth?.deleteUser(user.id)}>Editar</button></td>
                             <td><button>Eliminar</button></td>
                         </tr>)
                     })}

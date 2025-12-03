@@ -16,7 +16,8 @@ export type AuthContextType = {
     setApiUsers: (prev: ApiUser[]) => void,
     isLoading: boolean,
     fetchApi: () => void,
-    addUser: (user: ApiUser) => void
+    addUser: (user: ApiUser) => void,
+    deleteUser: (id: number) => void
 }
 
 export type AuthProviderProps = {
