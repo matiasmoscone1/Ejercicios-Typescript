@@ -15,7 +15,8 @@ export type AuthContextType = {
     apiUsers: ApiUser[] | null,
     setApiUsers: (prev: ApiUser[]) => void,
     isLoading: boolean,
-    fetchApi: () => void
+    fetchApi: () => void,
+    addUser: (user: ApiUser) => void
 }
 
 export type AuthProviderProps = {
@@ -28,11 +29,3 @@ export interface ApiUser {
     email: string;
     phone: string;
 }
-
-export type NewUser = {
-    id: number,
-    name: string,
-    email: string,
-    telephone: number
-}
-

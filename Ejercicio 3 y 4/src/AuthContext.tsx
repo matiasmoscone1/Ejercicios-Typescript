@@ -14,7 +14,7 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         role: "user"
     });
 
-    const [apiUsers, setApiUsers] = useState<ApiUser[] | null>(null);
+    const [apiUsers, setApiUsers] = useState<ApiUser[]>([]);
 
     const [isLogged, setIsLogged] = useState(false);
 
@@ -66,15 +66,16 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
 
     }
 
-    /*
-    useEffect(() => {
-        fetchApi();
-    }, []);*/
+    
+    const addUser = (user: ApiUser) => {
+        setApiUsers((prev) => [...prev, user])
+    }
+
 
     console.log(apiUsers);
 
     return(<AuthContext.Provider value={{ user: userState, login, logout, 
-    isLogged, apiUsers, setApiUsers, isLoading, fetchApi}}>
+    isLogged, apiUsers, setApiUsers, isLoading, fetchApi, addUser}}>
         { children }
     </AuthContext.Provider>)
 

@@ -1,4 +1,5 @@
 import { AuthContext, useAuth } from "./AuthContext";
+import CreateUser from "./CreateUser";
 
 const Dashboard = () => {
 
@@ -21,6 +22,7 @@ const Dashboard = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th colSpan={2}>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +32,8 @@ const Dashboard = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
+                            <td><button>Editar</button></td>
+                            <td><button>Eliminar</button></td>
                         </tr>)
                     })}
                 </tbody>
@@ -41,7 +45,9 @@ const Dashboard = () => {
         </div>
         : <></>}
 
-        </div>        
+        <CreateUser />
+
+        </div>
         : <></>}
 
     </div>)
