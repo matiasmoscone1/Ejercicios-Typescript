@@ -74,10 +74,16 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         setApiUsers(apiUsers.filter((user) => user.id !== id)); 
     }
 
+    const editUser = (user: ApiUser) => {
+        let userFound = apiUsers.find((u) => user.id === u.id);
+        userFound = user;
+
+    }
+
     console.log(apiUsers);
 
     return(<AuthContext.Provider value={{ user: userState, login, logout, 
-    isLogged, apiUsers, setApiUsers, isLoading, fetchApi, addUser, deleteUser}}>
+    isLogged, apiUsers, setApiUsers, isLoading, fetchApi, addUser, deleteUser, editUser}}>
         { children }
     </AuthContext.Provider>)
 
