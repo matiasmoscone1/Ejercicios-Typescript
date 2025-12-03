@@ -18,7 +18,7 @@ export type AuthContextType = {
     fetchApi: () => void,
     addUser: (user: ApiUser) => void,
     deleteUser: (id: number) => void,
-    editUser: (user: ApiUser) => void
+    editUser: (user: EditUser) => void
 }
 
 export type AuthProviderProps = {
@@ -34,6 +34,7 @@ export interface ApiUser {
 
 export type EditUser = {
     isEdit: boolean,
+    id: number,
     name: string;
     email: string;
     phone: string;

@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react"
-import { ApiUser, AuthContextType, AuthProviderProps, AuthUser } from "./types";
+import { ApiUser, AuthContextType, AuthProviderProps, AuthUser, EditUser } from "./types";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 export const useAuth = () => useContext(AuthContext);
@@ -74,10 +74,12 @@ const AuthContextProvider = ({ children }: AuthProviderProps) => {
         setApiUsers(apiUsers.filter((user) => user.id !== id)); 
     }
 
-    const editUser = (user: ApiUser) => {
-        let userFound = apiUsers.find((u) => user.id === u.id);
-        userFound = user;
-
+    const editUser = (user: EditUser) => {
+        setApiUsers((prev) => prev.map((u) => {
+            return(u.id === user.id 
+            ? {...u, name: user.name, email: user.email, phone: user.phone}
+            : u
+        )}))        
     }
 
     console.log(apiUsers);

@@ -9,6 +9,7 @@ const Dashboard = () => {
 
     const [isEdit, setIsEdit] = useState<EditUser>({
         isEdit: false,
+        id: 0,
         name: "",
         email: "",
         phone: ""
@@ -41,7 +42,7 @@ const Dashboard = () => {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
-                            <td><button onClick={() => setIsEdit({isEdit: true, name: user.name, email: user.email, phone: user.phone})}>Editar</button></td>
+                            <td><button onClick={() => setIsEdit({isEdit: true, id: user.id, name: user.name, email: user.email, phone: user.phone})}>Editar</button></td>
                             <td><button onClick={() => auth?.deleteUser(user.id)}>Eliminar</button></td>
                         </tr>)
                     })}
@@ -65,6 +66,7 @@ const Dashboard = () => {
             <label>Teléfono</label><input placeholder="teléfono" value={isEdit.phone} onChange={(e) => {
                 setIsEdit((prev) => ({...prev, phone: e.target.value}))
             }}/>
+            <button onClick={() => {auth?.editUser(isEdit); setIsEdit({isEdit: false, id: 0, name: "", email: "", phone: ""})}}>Actualizar usuario</button>
         </div> 
         : <></>}
 
