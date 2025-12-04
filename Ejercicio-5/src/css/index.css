@@ -13,13 +13,27 @@
 
 .products-container{
   width: 70vw;
-  height: 70vh;
+  height: 80vh;
   border: 1px solid black;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 4;
+  gap: 20px;
+  place-items: center;
 }
 
+
+.img-container{
+  width: 120px;
+  height: 150px;
+  border: 1px solid black;
+}
+.img-container img{
+  width: 100px;
+  height: 100px;
+}
 
