@@ -15,9 +15,11 @@ const ShoppingCartProvider = ({ children }: ShoppingCartProps) => {
 
 
 
-    return(<ShoppingCartProvider.Provider value={{ useShopping }}>
-        {{ children }}
-    </ShoppingCartProvider.Provider>)
+
+
+    return(<ShoppingCartContext.Provider value={{ useShopping }}>
+        { children }
+    </ShoppingCartContext.Provider>)
 
 }
 

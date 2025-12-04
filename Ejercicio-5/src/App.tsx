@@ -1,14 +1,15 @@
 import ShoppingCartProvider from './Context/ShoppingCartProvider'
-import './index.css'
+import './css/index.css'
+import Dashboard from './Dashboard'
 
 function App() {
   
   return (
     <>
       <ShoppingCartProvider>
-        <div>
-          
-        </div>
+
+        <Dashboard />
+        
       </ShoppingCartProvider>
 
 

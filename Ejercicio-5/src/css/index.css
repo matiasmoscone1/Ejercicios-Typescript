@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+
+.products-container{
+  width: 70vw;
+  height: 70vh;
+  border: 1px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+
