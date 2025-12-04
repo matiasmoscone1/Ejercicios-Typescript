@@ -10,6 +10,10 @@ const Products = () => {
         {images.map((imgName, i) => {
             return(<div key={i} className="img-container">
                 <img src={`../public/images/${imgName}`} alt=""/>
+                <span>{imgName.split(".")[0].replaceAll("_", " ")}</span>
+                <div>
+                    <button>+</button>
+                </div>
             </div>)
         })}
     </div>)

@@ -1,4 +1,5 @@
 import Products from "./Products/Products"
+import Cart from "./Cart/Cart";
 
 const Dashboard = () => {
 
@@ -7,6 +8,7 @@ const Dashboard = () => {
 
     return(
     <div className="dashboard">
+        <Cart />
         <Products />
 
     </div>)
