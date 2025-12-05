@@ -1,8 +1,14 @@
 import { ReactNode } from "react"
 
 
-export type ShoppingCart = {
+export type Product = {
+    id: number,
+    name: string,
+    price: number
+}
 
+export type ShoppingCartContext = {
+    products: Product[] | null
 
 }
 
