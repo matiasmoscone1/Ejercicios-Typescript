@@ -8,7 +8,7 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
             return({...state, productsCart: [...state.productsCart, action.payload]});
         }
         case "REMOVE": {
-            const newArray = state.productsCart.filter((prod) => prod.id === action.payload);
+            const newArray = state.productsCart.filter((prod) => prod.id !== action.payload);
             return({...state, productsCart: newArray});
         }
     
