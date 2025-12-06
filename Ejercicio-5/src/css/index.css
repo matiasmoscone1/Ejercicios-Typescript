@@ -133,6 +133,19 @@
 
 .total-price-cart{
   position: absolute;
-  
   bottom: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.total-price-cart span{
+  flex: 1;
+  text-align: center;
+  margin-left: 70px;
+}
+.total-price-cart button{
+  margin-right: 40px;
+  cursor: pointer;
 }

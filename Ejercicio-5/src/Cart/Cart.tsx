@@ -25,9 +25,9 @@ const Cart = () => {
                 </div>
                 </>)
             })}
-            <div>
-                <span className="total-price-cart">Precio total: ${globalState?.state.totalPrice}</span>
-                <button>Limpiar</button>
+            <div className="total-price-cart">
+                <span>Precio total: ${globalState?.state.totalPrice}</span>
+                <button onClick={() => globalState?.dispatch({type: "CLEAR"})}>Limpiar</button>
             </div>
         </div>
         : <></>}

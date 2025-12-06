@@ -40,7 +40,6 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
                     )
                 })
             }
-
             const newTotalPrice = newArray.length > 0 
                 ? newArray.reduce((acc, prod) => acc + prod.price * prod.quantity, 0)
                 : 0;
@@ -48,7 +47,7 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
             return({...state, productsCart: newArray, totalPrice: newTotalPrice});
         }
         case "CLEAR": {
-
+            return({...state, productsCart: [], totalPrice: 0});
         }
     
         default:

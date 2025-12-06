@@ -18,7 +18,6 @@ const ShoppingCartProvider = ({ children }: ShoppingCartProps) => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    
 
 
     return(<CartContext.Provider value={{ state, dispatch }}>
