@@ -23,9 +23,9 @@ const Cart = () => {
                     </span>
                     <button onClick={() => globalState?.dispatch({type: "REMOVE", payload: prod.id})}>X</button>
                 </div>
-                <span className="total-price-cart">Precio total: ${globalState.state.totalPrice}</span>
                 </>)
             })}
+            <span className="total-price-cart">Precio total: ${globalState?.state.totalPrice}</span>
         </div>
         : <></>}
     </div>)
