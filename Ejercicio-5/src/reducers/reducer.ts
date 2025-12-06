@@ -5,10 +5,20 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
 
     switch(action.type){
         case "ADD": {
-/*            const repeatProduct = state.products.map((prod) => {
-                prod === action.payload ? 
-            });*/
-            return({...state, productsCart: [...state.productsCart, action.payload]});
+            const newProduct = action.payload;
+            const exists = state.productsCart.some((prod) => prod.id === newProduct.id);
+            let updatedCart;
+            if(exists){
+                updatedCart = state.productsCart.map((prod) => {
+                    return(
+                        prod.id === newProduct.id 
+                            ? {...prod, quantity: prod.quantity + 1}
+                            : prod)
+                })
+            }else{
+                updatedCart = [...state.productsCart, newProduct]
+            }
+            return({...state, productsCart: updatedCart});
         }
         case "REMOVE": {
             const newArray = state.productsCart.filter((prod) => prod.id !== action.payload);
