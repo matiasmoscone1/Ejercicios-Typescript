@@ -1,27 +1,26 @@
-import { createContext, useContext, useState } from "react";
-import { ShoppingCartContext, ShoppingCartProps } from "../types/types";
+import { createContext, useContext, useReducer, useState } from "react";
+import { ShoppingCartContext, ShoppingCartProps, ShoppingCartProviderValue } from "../types/types";
 import { Product } from "../types/types";
 import { products } from "../Products/Products";
+import reducer from "../reducers/reducer";
 
-export const CartContext = createContext<ShoppingCartContext | null>(null);
+export const CartContext = createContext<ShoppingCartProviderValue | null>(null);
 
 export const useShopping = () => useContext(CartContext);
 
 const ShoppingCartProvider = ({ children }: ShoppingCartProps) => {
 
-    const [globalState, setGlobalState] = useState<ShoppingCartContext>({
+    const initialState: ShoppingCartContext = {
         products: products,
-        productsCart: null
-    });
+        productsCart: []
+    }
 
-    const [productsCart, setProductsCart] = useState<Product[] | null>(null);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     
 
 
-    console.log(globalState);
-
-    return(<CartContext.Provider value={{ products, productsCart }}>
+    return(<CartContext.Provider value={{ state, dispatch }}>
         { children }
     </CartContext.Provider>)
 

@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import React, { ReactNode } from "react"
 
 
 export type Product = {
@@ -9,9 +9,13 @@ export type Product = {
 
 export type ShoppingCartContext = {
     products: Product[],
-    productsCart: Product[] | null
-
+    productsCart: Product[]
 }
+
+export type ShoppingCartProviderValue = {
+    state: ShoppingCartContext;
+    dispatch: React.Dispatch<CartAction>;
+  };
 
 export type ShoppingCartProps = {
     children: ReactNode

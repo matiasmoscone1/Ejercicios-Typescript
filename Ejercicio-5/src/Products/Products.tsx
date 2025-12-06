@@ -1,3 +1,4 @@
+import { useShopping } from "../Context/ShoppingCartProvider"
 
 export const products = [{
         id: 0,
@@ -75,6 +76,7 @@ export const products = [{
 
 const Products = () => {
 
+    const globalState = useShopping();
 
     return(<div className="products-container">
         {products.map((product, i) => {
@@ -85,7 +87,7 @@ const Products = () => {
                     <span>${product.price}</span>
                 </div>
                 <div>
-                    <button>+</button>
+                    <button onClick={() => globalState?.dispatch({type: "ADD", payload: product})}>+</button>
                 </div>
             </div>)
         })}
