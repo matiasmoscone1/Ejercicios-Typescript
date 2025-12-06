@@ -1,5 +1,5 @@
 
-const products = [{
+export const products = [{
         id: 0,
         name: "notebook_1",
         price: 5000,

@@ -8,11 +8,18 @@ export type Product = {
 }
 
 export type ShoppingCartContext = {
-    products: Product[] | null
+    products: Product[],
+    productsCart: Product[] | null
 
 }
-
 
 export type ShoppingCartProps = {
     children: ReactNode
 }
+
+export type CartAction = 
+    | {type: "ADD", payload: Product}
+    | {type: "REMOVE", payload: number}
+    | {type: "CLEAR"}
+
+    
