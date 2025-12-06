@@ -25,11 +25,26 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
             return({...state, productsCart: updatedCart, totalPrice: total});
         }
         case "REMOVE": {
-            const newArray = state.productsCart.filter((prod) => prod.id !== action.payload);
+            let newArray;
+
+            const exists = state.productsCart.find((prod) => prod.id === action.payload);
+
+            if(exists && exists.quantity === 1){
+                newArray = state.productsCart.filter((product) => product.id !== action.payload)
+            }else{
+                newArray = state.productsCart.map((prod) => {                
+                    return(
+                        prod.id === action.payload
+                            ? {...prod, quantity: prod.quantity - 1}
+                            : prod
+                    )
+                })
+            }
+
             const newTotalPrice = newArray.length > 0 
                 ? newArray.reduce((acc, prod) => acc + prod.price * prod.quantity, 0)
                 : 0;
-//            state.productsCart.length === 0 ? state.totalPrice = 0 : state.totalPrice;  
+
             return({...state, productsCart: newArray, totalPrice: newTotalPrice});
         }
         case "CLEAR": {

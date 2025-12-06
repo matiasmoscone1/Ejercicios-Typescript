@@ -25,7 +25,10 @@ const Cart = () => {
                 </div>
                 </>)
             })}
-            <span className="total-price-cart">Precio total: ${globalState?.state.totalPrice}</span>
+            <div>
+                <span className="total-price-cart">Precio total: ${globalState?.state.totalPrice}</span>
+                <button>Limpiar</button>
+            </div>
         </div>
         : <></>}
     </div>)
