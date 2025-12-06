@@ -1,3 +1,4 @@
+import { products } from "../Products/Products";
 import { CartAction } from "../types/types";
 import { ShoppingCartContext } from "../types/types";
 
@@ -18,7 +19,11 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
             }else{
                 updatedCart = [...state.productsCart, newProduct]
             }
-            return({...state, productsCart: updatedCart});
+           
+            const total = updatedCart.reduce((acc, prod) => 
+                acc + prod.price * prod.quantity, 0);
+
+            return({...state, productsCart: updatedCart, totalPrice: total});
         }
         case "REMOVE": {
             const newArray = state.productsCart.filter((prod) => prod.id !== action.payload);

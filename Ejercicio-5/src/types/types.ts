@@ -10,7 +10,8 @@ export type Product = {
 
 export type ShoppingCartContext = {
     products: Product[],
-    productsCart: Product[]
+    productsCart: Product[],
+    totalPrice: number
 }
 
 export type ShoppingCartProviderValue = {

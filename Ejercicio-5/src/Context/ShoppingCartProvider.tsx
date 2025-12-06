@@ -12,7 +12,8 @@ const ShoppingCartProvider = ({ children }: ShoppingCartProps) => {
 
     const initialState: ShoppingCartContext = {
         products: products,
-        productsCart: []
+        productsCart: [],
+        totalPrice: 0
     }
 
     const [state, dispatch] = useReducer(reducer, initialState);

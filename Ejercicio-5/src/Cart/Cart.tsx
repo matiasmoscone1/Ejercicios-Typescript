@@ -13,7 +13,7 @@ const Cart = () => {
         <i className="fa-solid fa-cart-shopping" onClick={() => setState(!state)}></i>
         {state ? <div className="dropdown-cart-container">
             {globalState?.state.productsCart.map((prod) => {
-                return(
+                return(<>
                 <div key={prod.id} className="cart-product">
                     <span>
                         {prod.quantity}
@@ -22,7 +22,9 @@ const Cart = () => {
                         {prod.name} - ${prod.price}
                     </span>
                     <button onClick={() => globalState?.dispatch({type: "REMOVE", payload: prod.id})}>X</button>
-                </div>)
+                </div>
+                <span className="total-price-cart">Precio total: ${globalState.state.totalPrice}</span>
+                </>)
             })}
         </div>
         : <></>}

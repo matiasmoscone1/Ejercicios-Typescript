@@ -130,3 +130,9 @@
   align-items: center;
   cursor: pointer;
 }
+
+.total-price-cart{
+  position: absolute;
+  
+  bottom: 5%;
+}
