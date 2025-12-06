@@ -16,6 +16,9 @@ const Cart = () => {
                 return(
                 <div key={prod.id} className="cart-product">
                     <span>
+                        {prod.quantity}
+                    </span>
+                    <span>
                         {prod.name} - ${prod.price}
                     </span>
                     <button onClick={() => globalState?.dispatch({type: "REMOVE", payload: prod.id})}>X</button>

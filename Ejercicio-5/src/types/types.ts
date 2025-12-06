@@ -4,7 +4,8 @@ import React, { ReactNode } from "react"
 export type Product = {
     id: number,
     name: string,
-    price: number
+    price: number,
+    quantity: number
 }
 
 export type ShoppingCartContext = {

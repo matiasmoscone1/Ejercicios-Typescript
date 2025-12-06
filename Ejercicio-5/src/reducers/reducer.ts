@@ -5,6 +5,9 @@ const reducer = (state: ShoppingCartContext, action: CartAction) => {
 
     switch(action.type){
         case "ADD": {
+/*            const repeatProduct = state.products.map((prod) => {
+                prod === action.payload ? 
+            });*/
             return({...state, productsCart: [...state.productsCart, action.payload]});
         }
         case "REMOVE": {
